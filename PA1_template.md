@@ -17,7 +17,7 @@ df <- read.csv(filename)
 ####Exclude incomplete records from data analysis####
 Initial data tidying removes incomplete records. The *na.omit()* function eliminates all observations with missing values from the data frame. (Initial assessment shows that incomplete records are missing 'steps' values. So, any days/intervals with no steps recorded are eliminated in this phase of processing. Periods with '0' steps are not eliminated and will be included in analysis.)  
 
-####Setting interval data as formatted character factor####  
+####Setting interval data as formatted character factor####
 It has been noted that "interval" values in source data are encoded as enjambed hour and minute (i.e., 1745 indicates 5:45 PM), and are loaded by default as integer values. Treating this value as integer series for plotting introduces artificial gaps in the data (12 intervals with data at minutes 00 to 55 followed by 8  missing intervals for interval 60 through 95 in supposed integral series). Interval data values are therefore converted to factors and standardized as 4-character strings with leading 0s (for hours less than 10). Sequential numeric values for sorted factors supports properly calibrated time series plot (evenly spaced interval values on x-axis).
 
 ```r
