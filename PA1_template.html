@@ -98,9 +98,9 @@ dfc$interval &lt;- factor(intvl_char(dfc$interval))</code></pre>
 daily_steps&lt;-ddply(dfc,.(date),summarize,sum(steps))
 colnames(daily_steps)&lt;-list(&quot;Date&quot;,&quot;Steps&quot;)
 #format numeric output for easier reading/comprehension
-step_mean&lt;-format(mean(daily_steps[[&quot;Steps&quot;]]), scientific=FALSE,big.mark=&quot;,&quot;,big.interval=3)
+step_mean&lt;-format(round(mean(daily_steps[[&quot;Steps&quot;]])), scientific=FALSE,big.mark=&quot;,&quot;,big.interval=3)
 step_median&lt;-format(median(daily_steps[[&quot;Steps&quot;]]), scientific=FALSE,big.mark=&quot;,&quot;,big.interval=3)</code></pre>
-<p><strong>The mean total steps taken per day is 10,766.19.</strong><br /><strong>The median total steps taken per day is 10,765.</strong></p>
+<p><strong>The mean total steps taken per day is 10,766.</strong><br /><strong>The median total steps taken per day is 10,765.</strong></p>
 <p>The histogram below plots frequency of daily steps totals reported in 2500-step ranges. NOTE: Total days (sum of frequencies) is less than 61 days because days that had no record of steps have been excluded.</p>
 <pre class="r"><code>require(ggplot2)
 g&lt;-ggplot(data=daily_steps, aes(Steps)) 
@@ -145,9 +145,9 @@ dfc&lt;-ddply(dfc,.(date,interval,weekday),mutate,steps=lookup(interval,weekday,
 <pre class="r"><code>daily_steps&lt;-ddply(dfc,.(date),summarize,sum(steps))
 colnames(daily_steps)&lt;-list(&quot;Date&quot;,&quot;Steps&quot;)
 
-step_mean2&lt;-format(mean(daily_steps[[&quot;Steps&quot;]]), scientific=FALSE,big.mark=&quot;,&quot;,big.interval=3)
+step_mean2&lt;-format(round(mean(daily_steps[[&quot;Steps&quot;]])), scientific=FALSE,big.mark=&quot;,&quot;,big.interval=3)
 step_median2&lt;-format(median(daily_steps[[&quot;Steps&quot;]]), scientific=FALSE,big.mark=&quot;,&quot;,big.interval=3)</code></pre>
-<p><strong>The mean total steps taken per day is now calculated as <em>10,821.1</em>.</strong> (Compared to <em>10,766.19</em> before NA values were filled in with imputed values.)</p>
+<p><strong>The mean total steps taken per day is now calculated as <em>10,821</em>.</strong> (Compared to <em>10,766</em> before NA values were filled in with imputed values.)</p>
 <p><strong>The median total steps taken per day is now calculated as <em>11,015</em>.</strong> (Compared to <em>10,765</em> before NA values were filled in with imputed values.)</p>
 <p><strong>Adding imputed values has increased both the mean and median values for daily step totals.</strong></p>
 <p>The histogram below plots frequency of new daily steps totals. Totals on some bars has increased reflecting the addition of days which had been previously excluded because they had no data. Total of all frequencies should now be 61.</p>

@@ -41,10 +41,10 @@ require(plyr)
 daily_steps<-ddply(dfc,.(date),summarize,sum(steps))
 colnames(daily_steps)<-list("Date","Steps")
 #format numeric output for easier reading/comprehension
-step_mean<-format(mean(daily_steps[["Steps"]]), scientific=FALSE,big.mark=",",big.interval=3)
+step_mean<-format(round(mean(daily_steps[["Steps"]])), scientific=FALSE,big.mark=",",big.interval=3)
 step_median<-format(median(daily_steps[["Steps"]]), scientific=FALSE,big.mark=",",big.interval=3)
 ```
-**The mean total steps taken per day is 10,766.19.**  
+**The mean total steps taken per day is 10,766.**  
 **The median total steps taken per day is 10,765.**  
   
 The histogram below plots frequency of daily steps totals reported in 2500-step ranges. NOTE: Total days (sum of frequencies) is less than 61 days because days that had no record of steps have been excluded.
@@ -111,10 +111,10 @@ Prior analysis, which skipped days/intervals with missing data, is repeated here
 daily_steps<-ddply(dfc,.(date),summarize,sum(steps))
 colnames(daily_steps)<-list("Date","Steps")
 
-step_mean2<-format(mean(daily_steps[["Steps"]]), scientific=FALSE,big.mark=",",big.interval=3)
+step_mean2<-format(round(mean(daily_steps[["Steps"]])), scientific=FALSE,big.mark=",",big.interval=3)
 step_median2<-format(median(daily_steps[["Steps"]]), scientific=FALSE,big.mark=",",big.interval=3)
 ```
-**The mean total steps taken per day is now calculated as *10,821.1*.** (Compared to *10,766.19* before NA values were filled in with imputed values.)
+**The mean total steps taken per day is now calculated as *10,821*.** (Compared to *10,766* before NA values were filled in with imputed values.)
 
 **The median total steps taken per day is now calculated as *11,015*.** (Compared to *10,765* before NA values were filled in with imputed values.)
 
